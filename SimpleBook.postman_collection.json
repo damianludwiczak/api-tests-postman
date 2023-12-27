@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "4f1d54e0-3655-4276-9cae-43f4e6675511",
+		"name": "SimpleBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26876300",
+		"_collection_link": "https://universal-resonance-269295.postman.co/workspace/Api-Tests~846e1f53-3148-4a3b-9f62-29c41234d0de/collection/26876300-4f1d54e0-3655-4276-9cae-43f4e6675511?action=share&source=collection_link&creator=26876300"
+	},
+	"item": [
+		{
+			"name": "Create token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"token\", pm.response.json().accessToken);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"{{$randomFirstName}}\",\r\n    \"clientEmail\": \"{{$randomEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{hostSimpleBook}}/api-clients",
+					"protocol": "https",
+					"host": [
+						"{{hostSimpleBook}}"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get orders",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{hostSimpleBook}}/orders",
+					"protocol": "https",
+					"host": [
+						"{{hostSimpleBook}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"customerName\", pm.variables.replaceIn(\"{{$randomFullName}}\"));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"newOrderId\", pm.response.json().orderId);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": \"{{bookId}}\",\r\n    \"customerName\": \"{{customerName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{hostSimpleBook}}/orders",
+					"protocol": "https",
+					"host": [
+						"{{hostSimpleBook}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the  created order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Does the new order exist\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"searchId = jsonData.some(element => {\r",
+							"    if (element.id == pm.collectionVariables.get(\"newOrderId\")) {\r",
+							"        if (element.customerName == pm.collectionVariables.get(\"customerName\")) {\r",
+							"            if (element.bookId == pm.collectionVariables.get(\"bookId\")) {\r",
+							"                return true;\r",
+							"            }\r",
+							"        }\r",
+							"    } else {\r",
+							"        return false;\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"pm.test(\"verify that list contains created object\", function () {\r",
+							"    pm.expect(searchId).equal(true)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{hostSimpleBook}}/orders",
+					"protocol": "https",
+					"host": [
+						"{{hostSimpleBook}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete new Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Delete new order\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders/{{newOrderId}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders",
+						"{{newOrderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Is new order delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Has the order been deleted?\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders/{{newOrderId}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders",
+						"{{newOrderId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostSimpleBook",
+			"value": "simple-books-api.glitch.me",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "bookId",
+			"value": ""
+		},
+		{
+			"key": "newOrderId",
+			"value": ""
+		},
+		{
+			"key": "customerName",
+			"value": ""
+		}
+	]
+}

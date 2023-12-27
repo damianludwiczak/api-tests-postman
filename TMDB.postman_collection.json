@@ -1,0 +1,712 @@
+{
+	"info": {
+		"_postman_id": "04362e49-f456-4ff4-9a24-12939d0b0a56",
+		"name": "TMDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26876300",
+		"_collection_link": "https://universal-resonance-269295.postman.co/workspace/Api-Tests~846e1f53-3148-4a3b-9f62-29c41234d0de/collection/26876300-04362e49-f456-4ff4-9a24-12939d0b0a56?action=share&source=collection_link&creator=26876300"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Get movies list",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/discover/movie",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"discover",
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movie by ID",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{movieID}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{movieID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get rated movies",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/top_rated",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"top_rated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post rate movie",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{movieID}}/rating",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{movieID}}",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "guest_session_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "session_id\n",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post rate movie Copy",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{movieID}}/rating",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{movieID}}",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "guest_session_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "session_id\n",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rate",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{movie_id}}/rating",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{movie_id}}",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get latest",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/latest",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get top rated",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/top_rated",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"top_rated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list details",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{list_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{list_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add movie",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adult\": false,\r\n    \"backdrop_path\": \"/wl4NWiZwpzZH67HiDgpDImLyds9.jpg\",\r\n    \"genre_ids\": [\r\n        28,\r\n        12,\r\n        53\r\n    ],\r\n    \"id\": 299054,\r\n    \"original_language\": \"en\",\r\n    \"original_title\": \"Expend4bles\",\r\n    \"overview\": \"Armed with every weapon they can get their hands on and the skills to use them, The Expendables are the world’s last line of defense and the team that gets called when all other options are off the table. But new team members with new styles and tactics are going to give “new blood” a whole new meaning.\",\r\n    \"popularity\": 1362.272,\r\n    \"poster_path\": \"/iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg\",\r\n    \"release_date\": \"2023-09-15\",\r\n    \"title\": \"Expend4bles\",\r\n    \"video\": false,\r\n    \"vote_average\": 6.475,\r\n    \"vote_count\": 702\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{list_id}}/{{movieID}}?session_id=3de524dc9a0e296376c2962470caae5f",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{list_id}}",
+								"{{movieID}}"
+							],
+							"query": [
+								{
+									"key": "session_id",
+									"value": "3de524dc9a0e296376c2962470caae5f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create list",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"created_by\": \"seanhouser\",\r\n    \"description\": \"\",\r\n    \"favorite_count\": 0,\r\n    \"id\": 94722,\r\n    \"iso_639_1\": \"en\",\r\n    \"item_count\": 3,\r\n    \"items\": [\r\n        {\r\n            \"adult\": false,\r\n            \"backdrop_path\": \"/ozJtcKq5AKhasUc16Raccx8ZNXx.jpg\",\r\n            \"id\": 18935,\r\n            \"title\": \"Ernest Goes to Camp\",\r\n            \"original_language\": \"en\",\r\n            \"original_title\": \"Ernest Goes to Camp\",\r\n            \"overview\": \"Ernest, a lovable loser who works as a summer camp handyman and dreams of becoming a guidance counselor, must find a way to inspire a group of juvenile delinquents while stopping a shady strip mining company from closing the camp as well.\",\r\n            \"poster_path\": \"/pMmIFo5roUZ6hNqHOINbkj6EREz.jpg\",\r\n            \"media_type\": \"movie\",\r\n            \"genre_ids\": [\r\n                35,\r\n                10751\r\n            ],\r\n            \"popularity\": 10.266,\r\n            \"release_date\": \"1987-05-22\",\r\n            \"video\": false,\r\n            \"vote_average\": 5.19,\r\n            \"vote_count\": 142\r\n        },\r\n        {\r\n            \"adult\": false,\r\n            \"backdrop_path\": \"/6ut7ILWTmeIMVu7CafALemBanyp.jpg\",\r\n            \"id\": 18943,\r\n            \"title\": \"Ernest Goes to Jail\",\r\n            \"original_language\": \"en\",\r\n            \"original_title\": \"Ernest Goes to Jail\",\r\n            \"overview\": \"Bumbling Ernest P. Worrell is assigned to jury duty, where a crooked lawyer notices a resemblance with crime boss Mr. Nash, and arranges a switch. Nash assumes Ernest's job as a bank employee, while Ernest undergoes Nash's sentence to the electric chair. But instead of killing him, the electrocution gives Ernest superhuman powers, enabling him to escape from jail and foil Nash's attempt to rob the bank.\",\r\n            \"poster_path\": \"/w1k8SgODFQOk9wHjX4mi8QdkYAO.jpg\",\r\n            \"media_type\": \"movie\",\r\n            \"genre_ids\": [\r\n                35,\r\n                10751\r\n            ],\r\n            \"popularity\": 11.684,\r\n            \"release_date\": \"1990-04-06\",\r\n            \"video\": false,\r\n            \"vote_average\": 4.89,\r\n            \"vote_count\": 136\r\n        },\r\n        {\r\n            \"adult\": false,\r\n            \"backdrop_path\": \"/peCePXWzXT6O1YfIZWBZDfkAnTw.jpg\",\r\n            \"id\": 32685,\r\n            \"title\": \"Ernest Scared Stupid\",\r\n            \"original_language\": \"en\",\r\n            \"original_title\": \"Ernest Scared Stupid\",\r\n            \"overview\": \"Well-intentioned, eternally bumbling Ernest P. Worrell accidentally releases an evil demon from its sacred tomb. As the demon flexes its power and goes on a ruinous rampage, good-guy Ernest tries to step in to save the town from mass destruction. Trouble is, a 200-year-old curse has scared Ernest stupid, and that means hilarity all around! So, kick back and let the laugh-ridden adventures begin.\",\r\n            \"poster_path\": \"/qnMtX8eKFFrJVEPZijFZqzDbckK.jpg\",\r\n            \"media_type\": \"movie\",\r\n            \"genre_ids\": [\r\n                35,\r\n                10751,\r\n                14,\r\n                27\r\n            ],\r\n            \"popularity\": 14.453,\r\n            \"release_date\": \"1991-10-11\",\r\n            \"video\": false,\r\n            \"vote_average\": 5.195,\r\n            \"vote_count\": 159\r\n        }\r\n    ],\r\n    \"name\": \"ToDL\",\r\n    \"page\": 1,\r\n    \"poster_path\": null,\r\n    \"total_pages\": 1,\r\n    \"total_results\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete list",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "7791748ca60ca8874018b6fef75f6801",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{list_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{list_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get TV list",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "7791748ca60ca8874018b6fef75f6801",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "api_key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/discover/tv",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"discover",
+						"tv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "7791748ca60ca8874018b6fef75f6801",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "api_key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/now_playing",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"now_playing"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "7791748ca60ca8874018b6fef75f6801",
+			"type": "string"
+		}
+	]
+}
